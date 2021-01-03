@@ -37,13 +37,19 @@ function getStationsArray() {
        $station = new Station($resultArray['station_id'],
                                 $resultArray['station_name'],
                                 $resultArray['station_code']);
-        //echo($station);
+        
         array_push($stations,$station);                               
     }
     /*foreach($stations as $station) {
         echo($station);
     }*/
     return $stations;
+}
+function createStation($oneRow) {
+    return new Station($oneRow['station_id'],
+                       $oneRow['station_name'],
+                       $oneRow['station_code']);
+
 }
 
 echo(json_encode(getStationsArray()));

@@ -1,5 +1,5 @@
 class Station{
-    constructor(name){
-        this.name = name;
+    constructor(stationName){
+        this.stationName = stationName;
     }
 }

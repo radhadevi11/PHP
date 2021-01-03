@@ -1,24 +1,27 @@
 <?php
-class Station {
+class Station implements JsonSerializable  {
     private $stationId;
     private $stationName;
     private $stationCode;
 
     function __construct($stationId, $stationName, $stationCode) {
         $this->stationId = $stationId;
-        $this->staionName = $stationName;
+        $this->stationName = $stationName;
         $this->stationCode = $stationCode;
     }
-    function getStationId() {
+    public function getStationId() {
         return $this->stationId;
     }
-    function getStationName() {
+    public function getStationName() {
         return $this->stationName;
     }
-    function getStationCode() {
+    public function getStationCode() {
         return $this->stationCode;
     }
     public function __toString() {
         return " ID:$this->stationId,Name:$this->stationName,Code:$this->stationCode";
+    }
+    public function jsonSerialize() {
+        return (object) get_object_vars($this);
     }
 }

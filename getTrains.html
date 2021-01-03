@@ -1,36 +1,42 @@
 <html>
-    <head>
-        <script src="station.js">
-        </script>
-        <script src="service.js">
-        </script>    
-            <script>
-                function getDestinationStations() {
-                        var stations = getStations();
-                        var optionString = "<select name=\"destinationStationId\">";
-                        for(let i=0; i<stations.length;i++){
-                            optionString += "<option>"+stations[i].stationName+"</option>";
-                        }
-                        document.getElementById("destinationStation").innerHTML = optionString+"</select>";
+
+<head>
+    <script src="station.js">
+    </script>
+    <script src="service.js">
+    </script>
+    <script>
+        function getDestinationStations() {
+            getStations((stations) => {
+                var optionString = "<select name=\"destinationStationId\">";
+                for (let i = 0; i < stations.length; i++) {
+                    optionString += "<option>" + stations[i].stationName + "</option>";
                 }
-                function getSourceStation() {
-                    var stations = getStations();
-                        var optionString = "<select name=\"sourceStationId\">";
-                        for(let i=0; i<stations.length;i++){
-                            optionString += "<option>"+stations[i].stationName+"</option>";
-                        }
-                        document.getElementById("sourceStaion").innerHTML = optionString+"</select>";
+                document.getElementById("destinationStation").innerHTML = optionString + "</select>";
+            });
+
+        }
+        function getSourceStation() {
+            getStations((stations) => {
+                var optionString = "<select name=\"sourceStationId\">";
+                for (let i = 0; i < stations.length; i++) {
+                    optionString += "<option>" + stations[i].stationName + "</option>";
                 }
-                
-            </script>
-    </head>
-    <body onload="getSourceStation();getDestinationStations()">
-        <form action="getTrainsDetails.php" method="GET" >
-            <div id="sourceStaion"> 
-            </div><br>
-            <div id="destinationStation"> 
-            </div>
-            <button>Submit</button>
-        </form>
-    </body>
+                document.getElementById("sourceStaion").innerHTML = optionString + "</select>";
+            });
+        }
+
+    </script>
+</head>
+
+<body onload="getSourceStation();getDestinationStations()">
+    <form action="getTrainsDetails.php" method="GET">
+        <div id="sourceStaion">
+        </div><br>
+        <div id="destinationStation">
+        </div>
+        <button>Submit</button>
+    </form>
+</body>
+
 </html>
